@@ -1,12 +1,11 @@
 package guru.qa;
-
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
+import java.io.File;
 import static com.codeborne.selenide.Selectors.byId;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-
 
 public class PracticeFormTest {
     @BeforeAll
@@ -19,17 +18,22 @@ public class PracticeFormTest {
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
-        $("#userfirstName").setValue("Marina");
-        $("#userlastName").setValue("Ivanova");
+        $("#firstName").setValue("Marina");
+        $("#lastName").setValue("Ivanova");
         $("#userEmail").setValue("123@mail.ru");
-        $("#gender").setValue("Female");
+        $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("1112223334");
         $(byId("dateOfBirth")).click();
-        $("#subjectsInput").setValue("Hundi");
-        $("#hobbiesWrapper").setValue("Sport");
-        $("#uploadPicture").uploadFromClasspath("cat.jpeg");
+        $("#react-datepicker__month-select").$(byText("September")).click();
+        $("#react-datepicker__year-select").$(byText("1990")).click();
+        $("#react-datepicker__data-select").$(byText("17")).click();
+        $("#subjectsWrapper").setValue("a");
+        $("#subjectsWrapper").$(byText("Arts")).click();
+        $("#hobbiesWrapper").$(byText("Sport")).click();
+        $("#uploadPicture").uploadFromClasspath("cat");
+        $("uploadButton").click();
         $("#currentAddress").setValue("123000, Russia, Moscow, Tsvetnoi 1");
-        $("#stateCity-wrapper").setValue("NCR").click();
+        $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#stateCity-wrapper").setValue("Delhi").click();
         $("#submit").click();
     }
