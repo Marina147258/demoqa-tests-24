@@ -2,7 +2,8 @@ package guru.qa;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import java.io.File;
+
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -36,5 +37,21 @@ public class PracticeFormTest {
         $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#stateCity-wrapper").setValue("Delhi").click();
         $("#submit").click();
+
+        //проверки
+        $(".modal-dialog").shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").shouldHave(text("Marina Ivanova"));
+        $(".table-responsive").shouldHave(text("123@mail.ru"));
+        $(".table-responsive").shouldHave(text("Female"));
+        $(".table-responsive").shouldHave(text("1112223334"));
+        $(".table-responsive").shouldHave(text("15 September,1990"));
+        $(".table-responsive").shouldHave(text("Arts"));
+        $(".table-responsive").shouldHave(text("Sport"));
+        $(".table-responsive").shouldHave(text("cat"));
+        $(".table-responsive").shouldHave(text("123000, Russia, Moscow, Tsvetnoi 1"));
+        $(".table-responsive").shouldHave(text("NCR"));
+        $(".table-responsive").shouldHave(text("Delhi"));
     }
+
+
 }
