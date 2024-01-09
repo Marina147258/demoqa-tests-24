@@ -25,18 +25,17 @@ public class PracticeFormTest {
         $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("1112223334");
         $(byId("dateOfBirth")).click();
-        $("#react-datepicker__month-select").$(byText("September")).click();
-        $("#react-datepicker__year-select").$(byText("1990")).click();
-        $("#react-datepicker__data-select").$(byText("17")).click();
+        $(".react-datepicker__month-select").selectOption("September");
+        $(".react-datepicker__year-select").selectOption("1990");
+        $(".react-datepicker__day--017").click();
         $("#subjectsInput").setValue("Arts").pressEnter();
         $("#hobbiesWrapper").$(byText("Sport")).click();
         $("#uploadPicture").uploadFromClasspath("cat");
         $("uploadButton").click();
         $("#currentAddress").setValue("123000, Russia, Moscow, Tsvetnoi 1");
         $("#stateCity-wrapper").$(byText("NCR")).click();
-        $("#stateCity-wrapper").setValue("Delhi").click();
+        $("#stateCity-wrapper").$(byText("Delhi")).click();
         $("#submit").click();
-
         //проверки
         $(".modal-dialog").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(text("Marina Ivanova"));
@@ -51,6 +50,4 @@ public class PracticeFormTest {
         $(".table-responsive").shouldHave(text("NCR"));
         $(".table-responsive").shouldHave(text("Delhi"));
     }
-
-
 }
