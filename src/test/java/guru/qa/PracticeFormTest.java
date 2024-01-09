@@ -28,8 +28,7 @@ public class PracticeFormTest {
         $("#react-datepicker__month-select").$(byText("September")).click();
         $("#react-datepicker__year-select").$(byText("1990")).click();
         $("#react-datepicker__data-select").$(byText("17")).click();
-        $("#subjectsWrapper").setValue("a");
-        $("#subjectsWrapper").$(byText("Arts")).click();
+        $("#subjectsInput").setValue("Arts").pressEnter();
         $("#hobbiesWrapper").$(byText("Sport")).click();
         $("#uploadPicture").uploadFromClasspath("cat");
         $("uploadButton").click();
